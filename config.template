@@ -1,0 +1,87 @@
+deviceId = "${DEVICE_ID}"
+clientToken = "${CLIENT_TOKEN}"
+deviceName = "${DEVICE_NAME:-librespot-java}"
+deviceType = "${DEVICE_TYPE:-COMPUTER}"
+preferredLocale = "${PREFERRED_LOCALE:-en}"
+logLevel = "${LOG_LEVEL:-TRACE}"
+
+[auth]
+strategy = "${STRATEGY:-ZEROCONF}"
+username = "${USERNAME}"
+password = "${PASSWORD}"
+blob = "${BLOB}"
+storeCredentials = ${STORE_CREDENTIALS:-false}
+credentialsFile = "${CREDENTIALS_FILE:-credentials.json}"
+
+[zeroconf]
+listenPort = ${LISTEN_PORT:--1}
+listenAll = ${LISTEN_ALL:-true}
+interfaces = "${INTERFACES}"
+
+[cache]
+enabled = ${CACHE_ENABLED:-true}
+dir = "${DIR:-./cache/}"
+doCleanUp = ${DO_CLEAN_UP:-true}
+
+[network]
+connectionTimeout = ${CONNECTION_TIMEOUT:-10}
+
+[preload]
+enabled = ${PRELOAD_ENABLED:-true}
+
+[time]
+synchronizationMethod = "${SYNCHRONIZATION_METHOD:-NTP}"
+manualCorrection = ${MANUAL_CORRECTION:-0}
+
+[player]
+autoplayEnabled = ${AUTOPLAY_ENABLED:-true}
+preferredAudioQuality = "${PREFERRED_AUDIO_QUALITY:-NORMAL}"
+enableNormalisation = ${ENABLE_NORMALISATION:-true}
+normalisationPregain = ${NORMALISATION_PREGAIN:-+3.0}
+initialVolume = ${INITIAL_VOLUME:-65536}
+volumeSteps = ${VOLUME_STEPS:-64}
+logAvailableMixers = ${LOG_AVAILABLE_MIXERS:-true}
+mixerSearchKeywords = "${MIXER_SEARCH_KEYWORDS}"
+crossfadeDuration = ${CROSSFADE_DURATION:-0}
+output = "${OUTPUT:-MIXER}"
+outputClass = "${OUTPUT_CLASS}"
+releaseLineDelay = ${RELEASE_LINE_DELAY:-20}
+pipe = "${PIPE}"
+retryOnChunkError = ${RETRY_ON_CHUNK_ERROR:-true}
+metadataPipe = "${METADATA_PIPE}"
+bypassSinkVolume = ${BYPASS_SINK_VOLUME:-false}
+localFilesPath = "${LOCAL_FILES_PATH}"
+
+[api]
+port = ${API_PORT:-24879}
+host = "${API_HOST:-0.0.0.0}"
+
+[proxy]
+enabled = ${PROXY_ENABLED:-false}
+type = "${TYPE:-HTTP}"
+ssl = ${SSL:-false}
+address = "${ADDRESS}"
+port = ${PROXY_PORT:-0}
+auth = ${AUTH:-false}
+username = "${PROXY_USERNAME}"
+password = "${PROXY_PASSWORD}"
+
+[shell]
+enabled = ${SHELL_ENABLED:-false}
+executeWithBash = ${EXECUTE_WITH_BASH:-false}
+onContextChanged = "${ON_CONTEXT_CHANGED}"
+onTrackChanged = "${ON_TRACK_CHANGED}"
+onPlaybackEnded = "${ON_PLAYBACK_ENDED}"
+onPlaybackPaused = "${ON_PLAYBACK_PAUSED}"
+onPlaybackResumed = "${ON_PLAYBACK_RESUMED}"
+onPlaybackFailed = "${ON_PLAYBACK_FAILED}"
+onTrackSeeked = "${ON_TRACK_SEEKED}"
+onMetadataAvailable = "${ON_METADATA_AVAILABLE}"
+onVolumeChanged = "${ON_VOLUME_CHANGED}"
+onInactiveSession = "${ON_INACTIVE_SESSION}"
+onPanicState = "${ON_PANIC_STATE}"
+onConnectionDropped = "${ON_CONNECTION_DROPPED}"
+onConnectionEstablished = "${ON_CONNECTION_ESTABLISHED}"
+onStartedLoading = "${ON_STARTED_LOADING}"
+onFinishedLoading = "${ON_FINISHED_LOADING}"
+
