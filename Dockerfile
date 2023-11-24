@@ -1,6 +1,6 @@
 FROM eclipse-temurin:21
 
-ENV LIBRESPOT_JAR="librespot-player-1.6.3.jar"
+ARG LIBRESPOT_JAR
 
 COPY $LIBRESPOT_JAR /librespot/
 COPY config.template /librespot/
