@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 start_librespot() {
-  java -jar "$LIBRESPOT_JAR"
+  java -jar "$0"
 }
 
 render_config() {

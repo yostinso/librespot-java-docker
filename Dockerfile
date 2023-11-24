@@ -7,4 +7,4 @@ COPY config.template /librespot/
 COPY entrypoint.sh /librespot/
 
 WORKDIR /librespot/
-ENTRYPOINT ./entrypoint.sh
+ENTRYPOINT ./entrypoint.sh "$LIBRESPOT_JAR"
