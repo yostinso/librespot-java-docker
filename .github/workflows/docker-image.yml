@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Fetch configured JAR
-      run: curl -O -L https://github.com/librespot-org/librespot-java/releases/download/v${LIBRESPOT_VERSION}/librespot-player-${LIBRESPOT_VERSION }}.jar
+      run: curl -O -L https://github.com/librespot-org/librespot-java/releases/download/v${LIBRESPOT_VERSION}/librespot-player-${LIBRESPOT_VERSION}.jar
     
     - name: Login to Github Container Registry
       uses: docker/login-action@v3
