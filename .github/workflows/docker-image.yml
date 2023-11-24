@@ -12,8 +12,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
-    - name: Build the Docker image
-      run: |
-        source BUILD.env
-        curl -O -L https://github.com/librespot-org/librespot-java/releases/download/v${LIBRESPOT_VERSION}/librespot-player-${LIBRESPOT_VERSION}.jar
-        docker build -t yostinso/librespot-java:${LIBRESPOT_VERSION} -t yostinso/librespot-java:latest .
+    - name: Fetch configured JAR
+      run: curl -O -L https://github.com/librespot-org/librespot-java/releases/download/v${{ vars.LIBRESPOT_VERSION }}/librespot-player-${{ vars.LIBRESPOT_VERSION }}.jar
+    
+    - name: Login to Github Container Registry
+      uses: docker/login-action@v3
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    
+    - name: Build and publish
+      uses: docker/build-push-action@v5
+      with:
+        context: .
+        # platforms: linux/amd64,linux/arm64
+        push: true
+        tags: yostinso/librespot-java:${{ vars.LIBRESPOT_VERSION }},yostinso/librespot-java:latest
+        
