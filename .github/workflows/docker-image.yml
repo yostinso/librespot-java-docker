@@ -1,0 +1,19 @@
+name: Build Docker image
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: |
+        source BUILD.env
+        curl -O -L https://github.com/librespot-org/librespot-java/releases/download/v${LIBRESPOT_VERSION}/librespot-player-${LIBRESPOT_VERSION}.jar
+        docker build -t yostinso/librespot-java:${LIBRESPOT_VERSION} -t yostinso/librespot-java:latest .
