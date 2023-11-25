@@ -7,7 +7,7 @@ e.g. docker-compose files or Portainer.)
 
 ## Running it
 ```sh
-docker run -it -e DEVICE_NAME="my speaker" yostinso/librespot-java-docker
+docker run --rm -it -e DEVICE_NAME="my speaker" ghcr.io/yostinso/librespot-java
 ```
 
 ## Environment variable configuration
