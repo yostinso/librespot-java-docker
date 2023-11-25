@@ -1,0 +1,38 @@
+version: "2.4"
+services:
+    librespot:
+      container_name: librespot-java
+      image: ghcr.io/yostinso/librespot-java:latest
+      restart: always
+      devices:
+        - "/dev/snd:/dev/snd"
+      volumes:
+        - type: bind
+          source: /dev/snd/by-id
+          target: /dev/snd/by-id
+      networks:
+        librespot:
+          priority: 50
+          ipv4_address: 192.168.138.168
+      extra_hosts:
+        - "host-raspi:172.20.0.1" # changeme to raspi's hostname
+      environment:
+        
+        DEVICE_NAME: "Your Speaker" # changeme
+        DEVICE_TYPE: "SPEAKER"
+        LOG_LEVEL: DEBUG
+        PREFERRED_AUDIO_QUALITY: VERY_HIGH
+        INITIAL_VOLUME: 32768
+
+# Using an extra network here when on wifi seems necessary to support Zeroconf
+networks:
+  librespot:
+    name: librespot
+    driver: ipvlan
+    driver_opts:
+      parent: wlan0
+      ipvlan_mode: l2
+    ipam:
+      config:
+        - subnet: 192.168.138.0/24
+          gateway: 192.168.138.1
