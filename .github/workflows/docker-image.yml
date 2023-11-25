@@ -33,7 +33,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
         context: .
-        # platforms: linux/amd64,linux/arm64
+        platforms: linux/amd64,linux/arm64
         push: true
         tags: ${{ env.REGISTRY }}/yostinso/librespot-java:${{ env.LIBRESPOT_VERSION }},${{ env.REGISTRY }}/yostinso/librespot-java:latest
         build-args: LIBRESPOT_JAR=librespot-player-${{ env.LIBRESPOT_VERSION }}.jar
