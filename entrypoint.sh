@@ -1,7 +1,11 @@
 #!/usr/bin/env bash
 
 start_librespot() {
-  java -jar "${LIBRESPOT_JAR}"
+  if [[ $LIBRESPOT_MODE == "api" ]]; then
+    java -jar "${LIBRESPOT_API_JAR}"
+  else
+    java -jar "${LIBRESPOT_JAR}"
+  fi
 }
 
 render_config() {

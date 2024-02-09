@@ -19,8 +19,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: Fetch configured JAR
+    - name: Fetch configured player JAR
       run: curl -O -L https://github.com/librespot-org/librespot-java/releases/download/v${LIBRESPOT_VERSION}/librespot-player-${LIBRESPOT_VERSION}.jar
+
+    - name: Fetch configured API JAR
+      run: curl -O -L https://github.com/librespot-org/librespot-java/releases/download/v${LIBRESPOT_VERSION}/librespot-api-${LIBRESPOT_VERSION}.jar
 
     - name: Set up QEMU
       uses: docker/setup-qemu-action@v3
@@ -42,4 +45,4 @@ jobs:
         platforms: linux/amd64,linux/arm64
         push: true
         tags: ${{ env.REGISTRY }}/yostinso/librespot-java:${{ env.LIBRESPOT_VERSION }},${{ env.REGISTRY }}/yostinso/librespot-java:latest
-        build-args: LIBRESPOT_JAR=librespot-player-${{ env.LIBRESPOT_VERSION }}.jar
+        build-args: LIBRESPOT_JAR=librespot-player-${{ env.LIBRESPOT_VERSION }}.jar LIBRESPOT_API_JAR=librespot-api-${{ env.LIBRESPOT_VERSION }}.jar
